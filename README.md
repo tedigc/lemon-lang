@@ -5,4 +5,4 @@ A functional programmng language designed for string and list manipulation. Crea
 
 Authors:
 * [@tedigc](https://github.com/tedigc) 
-* [@gcjensen](https://github.com/gcjensen).
+* [@gcjensen](https://github.com/gcjensen)
