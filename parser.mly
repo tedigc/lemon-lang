@@ -28,8 +28,8 @@ parser_main:
 
 expr:
     | INT                                        { Integer $1 }
- 	  | LANG 					                             { Language $1 }
- 	  | STRING 				                             { String $1 }
+ 	| LANG 					                     { Language $1 }
+ 	| STRING 				                     { String $1 }
     | IDENT                                      { Var $1 }
     | EMPTYWORD                                  { String $1 }
     | BOOLEAN                                    { Boolean $1 }
@@ -42,17 +42,14 @@ expr:
     | LPAREN expr GREATERTHAN expr RPAREN        { GreaterThanExpr ($2, $4) }
     | LPAREN expr EQUALTO expr RPAREN            { EqualToExpr ($2, $4) }
     | LPAREN IF expr THEN expr ELSE expr RPAREN  { IfExpr ($3, $5, $7) }
-    | LPAREN FUNC IDENT IDENT ARROW expr IN expr RPAREN {
-     FuncExpr1 ($3, $4, $6, $8) }
-    | LPAREN FUNC IDENT IDENT IDENT ARROW expr IN expr RPAREN {
-     FuncExpr2 ($3, $4, $5, $7, $9) }
-    | LPAREN FUNC IDENT IDENT IDENT IDENT ARROW expr IN expr RPAREN {
-     FuncExpr3 ($3, $4, $5, $6, $8, $10) }
+    | LPAREN FUNC IDENT IDENT ARROW expr IN expr RPAREN {FuncExpr1 ($3, $4, $6, $8) }
+    | LPAREN FUNC IDENT IDENT IDENT ARROW expr IN expr RPAREN {FuncExpr2 ($3, $4, $5, $7, $9) }
+    | LPAREN FUNC IDENT IDENT IDENT IDENT ARROW expr IN expr RPAREN {FuncExpr3 ($3, $4, $5, $6, $8, $10) }
     | LPAREN expr expr RPAREN                    { AppExpr1 ($2, $3) }
     | LPAREN expr expr expr RPAREN               { AppExpr2 ($2, $3, $4) }
     | LPAREN expr expr expr expr RPAREN          { AppExpr3 ($2, $3, $4, $5) }
     | LPAREN VAR IDENT EQUAL expr IN expr RPAREN { VarExpr ($3, $5, $7) }
-    | LPAREN HEAD expr RPAREN	   	               { HeadExpr $3 }
+    | LPAREN HEAD expr RPAREN	   	             { HeadExpr $3 }
     | LPAREN TAIL expr RPAREN                    { TailExpr $3 }
     | LPAREN UNION  expr expr RPAREN             { UnionExpr  ($3, $4) }
     | LPAREN APPEND expr expr RPAREN             { AppendExpr ($3, $4) }
