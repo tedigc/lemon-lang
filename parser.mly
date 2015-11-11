@@ -28,8 +28,8 @@ parser_main:
 
 expr:
     | INT                                        { Integer $1 }
- 	| LANG 					                     { Language $1 }
- 	| STRING 				                     { String $1 }
+    | LANG                                       { Language $1 }
+    | STRING                                     { String $1 }
     | IDENT                                      { Var $1 }
     | EMPTYWORD                                  { String $1 }
     | BOOLEAN                                    { Boolean $1 }
@@ -49,7 +49,7 @@ expr:
     | LPAREN expr expr expr RPAREN               { AppExpr2 ($2, $3, $4) }
     | LPAREN expr expr expr expr RPAREN          { AppExpr3 ($2, $3, $4, $5) }
     | LPAREN VAR IDENT EQUAL expr IN expr RPAREN { VarExpr ($3, $5, $7) }
-    | LPAREN HEAD expr RPAREN	   	             { HeadExpr $3 }
+    | LPAREN HEAD expr RPAREN       	         { HeadExpr $3 }
     | LPAREN TAIL expr RPAREN                    { TailExpr $3 }
     | LPAREN UNION  expr expr RPAREN             { UnionExpr  ($3, $4) }
     | LPAREN APPEND expr expr RPAREN             { AppendExpr ($3, $4) }
