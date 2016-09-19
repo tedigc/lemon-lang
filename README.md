@@ -1,7 +1,7 @@
 # lemon
-The 'lemon' programming language.
+The 'lemon' Domain Specific Language (DSL).
 
-A functional programmng language designed for string and list manipulation. Created using ocamllex and ocamlyacc.
+A functional DSL designed for string and list manipulation. Created using ocamllex and ocamlyacc.
 
 Authors:
 * [tedigc](https://github.com/tedigc) 
