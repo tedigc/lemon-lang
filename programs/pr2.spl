@@ -1,7 +1,5 @@
 (func langUnion l1 l2 ->
   (if ((size l1) == 0)
-    then:
-      l2
-    else:
-      (langUnion (tail l1) (cons (head l1) l2)))
+    then: l2
+    else: (langUnion (tail l1) (cons (head l1) l2)))
   in (cap (sort (uniq (langUnion $1 $2))) $last_line))

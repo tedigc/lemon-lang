@@ -1,12 +1,12 @@
 (var lang = $1 in
   (func concatenation list ->
     (if ((size lang) == 0)
-	  then: {}
-	  else:
-		(if ((size list) == 0)
-		  then: {}
-		  else:
-			(cons (concat (head lang) (head list)) (concatenation (tail list)))))
+      then: {}
+      else:
+        (if ((size list) == 0)
+          then: {}
+          else:
+            (cons (concat (head lang) (head list)) (concatenation (tail list)))))
   in
-	(sort (uniq (concatenation (kleene "a" $last_line))))
+    (sort (uniq (concatenation (kleene "a" $last_line))))
 ))
