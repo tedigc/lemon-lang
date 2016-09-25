@@ -1,35 +1,31 @@
 (var all = (union (union (kleene "a" 3) (kleene "b" 3)) (kleene "c" 3))
-	in
-		(func findlengthtwo biglist ->
-			(if ((size biglist) == 0)
-				then: {}
-				else: (if ((length (head biglist)) == 2)
-						then: (cons (head biglist) (findlengthtwo (tail biglist)))
-						else: (findlengthtwo (tail biglist))
-					)
-			)
-			in
-				(func eachword list ->
-					(if ((size list) == 0)
-						then: {}
-						else: (union (append all (head list)) (eachword (tail list)))
-					)
-					in (func concatenation list1 list2 ->
-						(if ((size list1) == 0)
-							then: {}
-							else:
-								(if ((size list2) == 0)
-									then:
-										(if ((size list1) == 1)
-											then: {}
-											else: (concatenation (tail list1) (findlengthtwo (eachword all)))
-										)
-									else:
-										(cons (concat (head list1) (head list2)) (concatenation list1 (tail list2)))
-								)
-							)
-							in (cap (sort (uniq (concatenation $1 (findlengthtwo (eachword all))))) $last_line)
-						)
-				)
-		)
-)
+  in
+    (func findlengthtwo biglist ->
+      (if ((size biglist) == 0)
+        then: {}
+        else: (if ((length (head biglist)) == 2)
+                then: (cons (head biglist) (findlengthtwo (tail biglist)))
+                else: (findlengthtwo (tail biglist)))
+      )
+    in
+      (func eachword list ->
+        (if ((size list) == 0)
+          then: {}
+          else: (union (append all (head list)) (eachword (tail list))))
+      in 
+        (func concatenation list1 list2 ->
+          (if ((size list1) == 0)
+            then: {}
+            else:
+              (if ((size list2) == 0)
+                then:
+                  (if ((size list1) == 1)
+                    then: {}
+                    else: (concatenation (tail list1) (findlengthtwo (eachword all))))
+                else:
+                  (cons (concat (head list1) (head list2)) (concatenation list1 (tail list2)))
+                )
+            )
+        in (cap (sort (uniq (concatenation $1 (findlengthtwo (eachword all))))) $last_line))
+      )
+    ))

@@ -1,10 +1,10 @@
 (func postfixSolver l ->
   (var str = "a" in
     (if ((size l) == 0)
-      then:
-        {}
-      else:
-        (cons (concat (head l) str) (postfixSolver (tail l)))
-    ))
+	  then:
+		{}
+	  else:
+		(cons (concat (head l) str) (postfixSolver (tail l)))
+	))
   in (cap (sort (uniq (postfixSolver $1))) $last_line)
 )
