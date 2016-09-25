@@ -5,8 +5,7 @@
         then: {}
         else: (if ((length (head biglist)) == 2)
                 then: (cons (head biglist) (findlengthtwo (tail biglist)))
-                else: (findlengthtwo (tail biglist)))
-      )
+                else: (findlengthtwo (tail biglist))))
     in
       (func eachword list ->
         (if ((size list) == 0)
@@ -26,6 +25,5 @@
                   (cons (concat (head list1) (head list2)) (concatenation list1 (tail list2)))
                 )
             )
-        in (cap (sort (uniq (concatenation $1 (findlengthtwo (eachword all))))) $last_line))
-      )
+        in (cap (sort (uniq (concatenation $1 (findlengthtwo (eachword all))))) $last_line)))
     ))
